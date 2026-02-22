@@ -21,11 +21,11 @@ Hi! This is our Grade 12 Capstone Project. It is a smart traffic application tha
 
 Here is a look at the system in action:
 
-![System Interface 3](images/Image-3.png)
+![System Interface 3](./images/Image-3.png)
 
-![Prototye in action 1](images/image-1.png)
+![Prototye in action 1](./images/image-1.png)
 
-![Prototye in action 2](images/Image-2.png)
+![Prototye in action 2](./images/Image-2.png)
 
 ---
 
