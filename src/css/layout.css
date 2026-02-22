@@ -1,0 +1,140 @@
+/* --- Main Dashboard Grid Layout --- */
+
+.dashboard-grid {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 10px;
+    gap: 10px;
+}
+
+/* Header taking up the top strip */
+.header-bar {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--panel-bg);
+    border-bottom: 2px solid var(--accent-primary);
+    padding: 0 20px;
+}
+
+.system-meta {
+    display: flex;
+    gap: 20px;
+    font-family: var(--font-code);
+    font-size: 11px;
+}
+
+/* A generic box container for each widget section */
+.panel {
+    background: var(--panel-bg);
+    border: 1px solid var(--border-dim);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.panel-header {
+    background: #1a1a1a;
+    border-bottom: 1px solid var(--border-dim);
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panel-header h3 {
+    margin: 0;
+    font-size: 11px;
+    color: var(--text-dim);
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* --- The 3 Big Rows of the Dashboard --- */
+
+/* Row 1: Vision Camera & Stats (takes up 50% of the screen) */
+.row-vision {
+    display: flex;
+    flex: 5;
+    gap: 10px;
+    min-height: 350px;
+}
+
+.vision-panel {
+    flex: 2;
+    /* takes 66% of the row */
+}
+
+.stats-panel {
+    flex: 1;
+    /* takes 33% of the row */
+    min-width: 300px;
+    padding: 0;
+}
+
+/* Row 2: Environment & Signal Brain (takes up 30% of the screen) */
+.row-engine {
+    display: flex;
+    flex: 3;
+    gap: 10px;
+    min-height: 200px;
+}
+
+.env-panel {
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.math-panel {
+    flex: 2;
+}
+
+.signal-panel-dual {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Row 3: Hardware LCD Display & Logs (takes up 20% of the screen) */
+.row-hardware {
+    display: flex;
+    flex: 2;
+    gap: 10px;
+    min-height: 150px;
+}
+
+.lane-panel {
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.lcd-panel {
+    flex: 2;
+}
+
+.log-panel {
+    flex: 1;
+}
+
+/* general inner layouts */
+.canvas-wrapper {
+    flex: 1;
+    position: relative;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    /* no scrollbar here, scale image to fit perfectly */
+}
+
+.chart-wrapper {
+    flex: 1;
+    padding: 0 10px 10px 10px;
+    min-height: 0;
+}

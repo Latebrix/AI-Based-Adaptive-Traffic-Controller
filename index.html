@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRAFFIC OPTIMIZATION CORE | ENGINEERING PROTOTYPE V2.1</title>
+    <link rel="stylesheet" href="src/css/base.css">
+    <link rel="stylesheet" href="src/css/layout.css">
+    <link rel="stylesheet" href="src/css/components.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="dashboard-grid">
+        <!-- Header -->
+        <header class="header-bar">
+            <div class="logo-section">
+                <h1>TRAFFIC OPTIMIZATION CORE</h1>
+                <span class="badge-prototype">V2.1 BETA</span>
+            </div>
+            <div class="system-meta">
+                <div class="meta-item"><span class="dot green"></span> CLOUD: <span id="status-cloud"
+                        class="val-text">CONNECTING</span></div>
+                <div class="meta-item"><span class="dot blue"></span> CTRL: <span id="status-ctrl"
+                        class="val-text">INIT</span></div>
+                <div class="meta-item"><span class="dot yellow"></span> MQ135: <span id="status-sensor"
+                        class="val-text">SIMULATED</span></div>
+                <div class="meta-item accent-box">LATENCY: <span id="val-latency">0</span> ms</div>
+            </div>
+        </header>
+
+        <!-- Row 1: Vision & Physics (50%) -->
+        <section class="row-vision">
+            <!-- Col 1: Vision Feed -->
+            <div class="panel vision-panel">
+                <div class="panel-header">
+                    <h3>CAM-01 FEED [YOLOv11s + CNNXception]</h3>
+                    <span class="live-tag">LIVE</span>
+                </div>
+                <div class="canvas-wrapper">
+                    <canvas id="vision-canvas" width="640" height="480"></canvas>
+                    <div id="loader" class="loader-overlay hidden">
+                        <div class="spinner"></div> SCANNING...
+                    </div>
+                </div>
+            </div>
+
+            <!-- Col 2: Traffic Physics -->
+            <div class="panel stats-panel">
+                <div class="panel-header">
+                    <h3>TRAFFIC PHYSICS</h3>
+                </div>
+
+                <div class="stat-grid">
+                    <!-- Congestion Badge -->
+                    <div class="stat-card" id="card-congestion">
+                        <span class="label">CONGESTION LEVEL</span>
+                        <div class="big-badge" id="val-congestion">LIGHT</div>
+                    </div>
+
+                    <!-- Counts -->
+                    <div class="stat-card">
+                        <span class="label">VEHICLE COUNTS</span>
+                        <div class="count-row">
+                            <div class="c-item">
+                                <span class="val" id="val-inc">0</span>
+                                <span class="sub">INCOMING</span>
+                            </div>
+                            <div class="vr"></div>
+                            <div class="c-item">
+                                <span class="val" id="val-out">0</span>
+                                <span class="sub">OUTGOING</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flow Rate Chart -->
+                <div class="chart-wrapper">
+                    <canvas id="flowChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Row 2: Decision Engine (30%) -->
+        <section class="row-engine">
+            <!-- Col 1: Environment -->
+            <div class="panel env-panel">
+                <div class="panel-header">
+                    <h3>ENVIRONMENT</h3>
+                </div>
+                <div class="gauge-container">
+                    <div class="gauge-value" id="val-p-level">350</div>
+                    <div class="gauge-unit">PPM</div>
+                    <div class="gauge-bar-bg">
+                        <div class="gauge-bar-fill" id="gauge-fill" style="width: 35%"></div>
+                    </div>
+                    <div class="gauge-status" id="val-p-status">NORMAL</div>
+                </div>
+            </div>
+
+            <!-- Col 2: The Math Brain -->
+            <div class="panel math-panel">
+                <div class="panel-header">
+                    <h3>ALGORITHM INTERNALS</h3>
+                </div>
+                <div class="math-box">
+                    <div class="formula">J = (67.2 × V_density) + (28.8 × P_index)</div>
+                    <hr class="math-divider">
+                    <div class="vars-grid">
+                        <div class="var-row">
+                            <span class="var-name">V_density</span>
+                            <span class="var-val" id="val-v-density">0.00</span>
+                        </div>
+                        <div class="var-row">
+                            <span class="var-name">P_index</span>
+                            <span class="var-val" id="val-p-index">0.00</span>
+                        </div>
+                    </div>
+                    <div class="result-row">
+                        <span>CALCULATED J = </span>
+                        <span class="result-val" id="val-j-calc">0</span>
+                        <span>s</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Col 3: Signal Controller (Redesigned) -->
+            <div class="panel signal-panel-dual">
+                <div class="panel-header">
+                    <h3>SIGNAL STATUS</h3>
+                </div>
+                <div class="dual-signal-grid">
+                    <!-- Vertical Road -->
+                    <div class="signal-col border-r">
+                        <div class="road-label">VERTICAL ROAD</div>
+                        <div class="timer-display" id="timer-v">00</div>
+                        <div class="lights-row-mini">
+                            <div class="light-mini red" id="v-red"></div>
+                            <div class="light-mini yellow" id="v-yellow"></div>
+                            <div class="light-mini green" id="v-green"></div>
+                        </div>
+                    </div>
+                    <!-- Horizontal Road -->
+                    <div class="signal-col">
+                        <div class="road-label">HORIZONTAL ROAD</div>
+                        <div class="timer-display" id="timer-h">00</div>
+                        <div class="lights-row-mini">
+                            <div class="light-mini red" id="h-red"></div>
+                            <div class="light-mini yellow" id="h-yellow"></div>
+                            <div class="light-mini green" id="h-green"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Row 3: Hardware Control (20%) -->
+        <section class="row-hardware">
+            <!-- Col 1: Reversible Lane -->
+            <div class="panel lane-panel">
+                <div class="panel-header">
+                    <h3>REVERSIBLE LANE</h3>
+                </div>
+                <div class="lane-state" id="val-rev-lane">NORMAL</div>
+            </div>
+
+            <!-- Col 2: LCD Simulation -->
+            <div class="panel lcd-panel">
+                <div class="panel-header">
+                    <h3>STREET LCD SIMULATION</h3>
+                </div>
+                <div class="lcd-grid">
+                    <div class="lcd-screen">
+                        <div class="screen-label">LCD 01 (Dynamic)</div>
+                        <div class="screen-content" id="lcd-1-content">
+                            <span class="arrow-up">⬆</span>
+                            <span class="arrow-down">⬇</span>
+                        </div>
+                    </div>
+                    <div class="lcd-screen">
+                        <div class="screen-label">LCD 02 (Reversible)</div>
+                        <div class="screen-content" id="lcd-2-content">
+                            <span class="arrow-down">⬇</span>
+                            <span class="arrow-down">⬇</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Col 3: Logs -->
+            <div class="panel log-panel">
+                <div class="panel-header">
+                    <h3>SYSTEM LOGS</h3>
+                </div>
+                <div id="log-container" class="log-box"></div>
+            </div>
+        </section>
+    </div>
+    <script src="src/renderer/chart.js"></script>
+    <script src="src/renderer/camera-feed.js"></script>
+    <script src="src/renderer/ui-dashboard.js"></script>
+    <script src="src/renderer/signal-timers.js"></script>
+</body>
+
+</html>

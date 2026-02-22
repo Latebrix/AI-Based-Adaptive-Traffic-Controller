@@ -1,0 +1,375 @@
+/* --- Reusable Components and Widgets --- */
+
+/* Text styling for titles and badges */
+.logo-section h1 {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    display: inline-block;
+    margin: 0;
+    background: -webkit-linear-gradient(0deg, #fff, #aaa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Our tiny prototype version badge */
+.badge-prototype {
+    background: #333;
+    color: #00ff9d;
+    font-family: var(--font-code);
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+/* Specific text items */
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-dim);
+}
+
+.val-text {
+    color: #fff;
+    font-weight: bold;
+}
+
+.accent-box {
+    background: rgba(0, 122, 204, 0.2);
+    border: 1px solid var(--accent-primary);
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: var(--accent-primary);
+}
+
+/* Tiny colored dots for status (like Discord statuses!) */
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.green {
+    background: var(--accent-success);
+    box-shadow: 0 0 5px var(--accent-success);
+    /* makes it glow a bit */
+}
+
+.blue {
+    background: var(--accent-primary);
+}
+
+.yellow {
+    background: var(--accent-warn);
+}
+
+/* The spinning "SCANNING..." screen over the camera */
+.loader-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-primary);
+    font-family: var(--font-code);
+    gap: 10px;
+}
+
+/* --- Stats and Numbers Grouping --- */
+.stat-grid {
+    padding: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.stat-card {
+    background: #1e1e1e;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.stats-panel .label {
+    display: block;
+    font-size: 10px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+/* Giant text for the congestion word */
+.big-badge {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 4px;
+    background: #333;
+    color: #fff;
+}
+
+.count-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.c-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.c-item .val {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: var(--font-code);
+}
+
+.c-item .sub {
+    font-size: 9px;
+    color: #666;
+}
+
+/* A vertical line to separate numbers visually */
+.vr {
+    width: 1px;
+    height: 30px;
+    background: #333;
+}
+
+/* --- Pollution Gauge --- */
+.gauge-container {
+    width: 80%;
+    text-align: center;
+}
+
+.gauge-value {
+    font-size: 40px;
+    font-weight: bold;
+    font-family: var(--font-code);
+    color: var(--text-main);
+}
+
+.gauge-bar-bg {
+    height: 8px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 4px;
+    width: 100%;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.gauge-bar-fill {
+    height: 100%;
+    /* it transitions smoothly between green, yellow, and red based on pollution */
+    background: linear-gradient(90deg, #00aa00, #cccc00, #cc0000);
+    transition: width 0.5s;
+}
+
+.gauge-status {
+    font-weight: bold;
+}
+
+/* --- The Math Box --- */
+.math-box {
+    padding: 20px;
+    font-family: var(--font-code);
+    width: 100%;
+    padding: 10px;
+}
+
+.formula {
+    background: #0f0f0f;
+    border: 1px solid #333;
+    padding: 10px;
+    color: #ccc;
+    text-align: center;
+    font-size: 13px;
+}
+
+.math-divider {
+    border: 0;
+    border-top: 1px dashed #333;
+    margin: 10px 0;
+}
+
+.vars-grid {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.var-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.var-name {
+    color: var(--accent-primary);
+    font-size: 12px;
+}
+
+.var-val {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.result-row {
+    text-align: center;
+    background: rgba(0, 255, 157, 0.1);
+    color: var(--accent-success);
+    padding: 8px;
+    border: 1px solid var(--accent-success);
+}
+
+.result-val {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0 5px;
+}
+
+/* --- Traffic Light UI Elements --- */
+.dual-signal-grid {
+    display: flex;
+    flex: 1;
+}
+
+.signal-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+.border-r {
+    border-right: 1px solid #333;
+}
+
+.road-label {
+    font-size: 10px;
+    font-weight: bold;
+    color: #888;
+    letter-spacing: 1px;
+}
+
+.timer-display {
+    font-size: 40px;
+    font-family: var(--font-code);
+    font-weight: bold;
+    color: #fff;
+}
+
+.lights-row-mini {
+    display: flex;
+    gap: 8px;
+}
+
+/* Tiny LED circles */
+.light-mini {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    opacity: 0.2;
+    /* they stay dim until it's their turn */
+    border: 2px solid #555;
+}
+
+.light-mini.red {
+    background: #f00;
+}
+
+.light-mini.yellow {
+    background: #ff0;
+}
+
+.light-mini.green {
+    background: #0f0;
+}
+
+.light-mini.active {
+    opacity: 1;
+    box-shadow: 0 0 10px currentColor;
+    /* makes it actually look like a glowing light */
+    border-color: #fff;
+}
+
+/* --- Hardware / Reversible LCD Elements --- */
+.lane-state {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: var(--font-code);
+    color: var(--accent-warn);
+    text-align: center;
+}
+
+.lcd-grid {
+    display: flex;
+    height: 100%;
+    padding: 10px;
+    gap: 10px;
+    justify-content: center;
+}
+
+.lcd-screen {
+    background: #000;
+    border: 3px solid #333;
+    border-radius: 4px;
+    width: 140px;
+    display: flex;
+    flex-direction: column;
+}
+
+.screen-label {
+    background: #222;
+    color: #aaa;
+    padding: 2px;
+    font-size: 9px;
+    text-align: center;
+}
+
+.screen-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 30px;
+    color: #0f0;
+    /* Default green arrows */
+    text-shadow: 0 0 5px #0f0;
+}
+
+.color-red {
+    color: red;
+    text-shadow: 0 0 5px red;
+    /* The red 'X' cross for closing a lane */
+}
+
+/* --- System Logs Box --- */
+.log-box {
+    flex: 1;
+    background: #000;
+    font-family: var(--font-code);
+    font-size: 10px;
+    color: #00ff9d;
+    /* Matrix green text style */
+    padding: 5px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    display: flex;
+    flex-direction: column-reverse;
+    /* new text appears at bottom */
+}

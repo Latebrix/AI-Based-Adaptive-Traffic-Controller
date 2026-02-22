@@ -1,0 +1,59 @@
+/* --- Core Colors and Fonts --- */
+:root {
+    --bg-core: #0a0a0a;
+    --panel-bg: #141414;
+    --border-dim: #333;
+    
+    /* our main highlight colors */
+    --accent-primary: #007acc;
+    --accent-success: #00ff9d;
+    --accent-warn: #ffcc00;
+    --accent-danger: #ff3333;
+    
+    --text-main: #ffffff;
+    --text-dim: #888888;
+    
+    --font-ui: 'Inter', sans-serif;
+    --font-code: 'JetBrains Mono', monospace;
+}
+
+/* resetting default browser margins so things look exact */
+* {
+    box-sizing: border-box;
+}
+
+/* making the scrollbar dark and sleek */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* setting up the main app background */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-core);
+    color: var(--text-main);
+    font-family: var(--font-ui);
+    height: 100vh;
+    overflow-y: auto; /* allow scrolling down if the screen is tiny */
+    font-size: 14px;
+}
+
+/* utility class to hide things completely */
+.hidden {
+    display: none !important;
+}

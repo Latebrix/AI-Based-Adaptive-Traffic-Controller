@@ -1,0 +1,52 @@
+{
+  "name": "smart-traffic-system",
+  "productName": "Smart Traffic System",
+  "version": "2.1.0",
+  "description": "Intelligent Traffic Optimization Core with ESP32 Integration",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder -w"
+  },
+  "build": {
+    "appId": "com.smarttraffic.system",
+    "productName": "Smart Traffic System Dashboard",
+    "npmRebuild": false,
+    "asar": true,
+    "win": {
+      "target": "nsis",
+      "icon": "icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "${productName} Setup ${version}.${ext}"
+    },
+    "files": [
+      "**/*",
+      "!**/*.ts",
+      "!esp32_test/*"
+    ]
+  },
+  "repository": "https://github.com/Latebrix/AI-Based-Adaptive-Traffic-Controller",
+  "keywords": [
+    "Electron",
+    "Smart",
+    "Traffic",
+    "AI",
+    "YOLO"
+  ],
+  "author": "Mohamed Ahmed Magdy Ahmed, Botros Ashraf, Youssef Sabry",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^26.4.0"
+  },
+  "dependencies": {
+    "axios": "^1.13.2",
+    "chart.js": "^4.5.1",
+    "dotenv": "^17.3.1",
+    "form-data": "^4.0.5",
+    "serialport": "^13.0.0"
+  }
+}
